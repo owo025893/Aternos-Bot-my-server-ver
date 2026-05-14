@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mineflayer": "latest"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+
