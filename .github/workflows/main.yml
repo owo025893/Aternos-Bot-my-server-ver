@@ -9,21 +9,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          echo '{"dependencies":{"mineflayer":"latest","mineflayer-bedrock":"latest"},"scripts":{"start":"node index.js"}}' > package.json
+          echo '{"dependencies":{"mineflayer":"latest","bedrock-protocol":"latest"},"scripts":{"start":"node index.js"}}' > package.json
           echo "const mineflayer = require('mineflayer');
-          const bedrock = require('mineflayer-bedrock');
           const bot = mineflayer.createBot({
               host: 'Youtube-ng80.aternos.me',
               port: 26773,
               username: 'bot',
               version: false
           });
-          bedrock(bot);
           bot.on('spawn', () => console.log('OK'));
-          bot.on('error', (err) => {
-              console.log('Error:', err.message);
-              // もしバージョンエラーが出たらログに詳細を出すようにした
-          });" > index.js
+          bot.on('error', (err) => console.log('Error:', err.message));" > index.js
       - uses: actions/setup-node@v4
         with:
           node-version: 22
